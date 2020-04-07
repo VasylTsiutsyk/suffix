@@ -6,7 +6,23 @@ import Vue from "vue";
  * -------------------------------
  */
 import Header from "@/chunks/header/header";
-Vue.component("v-header", Header);
+Vue.component("suffix-header", Header);
+import Footer from "@/chunks/footer/footer";
+Vue.component("suffix-footer", Footer);
+import BanerArticle from "@/chunks/baner-article/baner-article";
+Vue.component("BanerArticle", BanerArticle);
+
+import Collapse from "vue-collapse";
+Vue.component("Collapse", Collapse);
+
+import Loader from "@/chunks/app/loader/loader";
+Vue.component("Loader", Loader);
+
+/**
+ * -------------------------------
+ * Plugins
+ * -------------------------------
+ */
 
 /**
  * -------------------------------
@@ -23,8 +39,8 @@ Vue.mixin(mixin);
  */
 import moment from "moment";
 Vue.filter("formatDate", function(value) {
-  if (value) {
-    // return moment(String(value)).format('MM/DD/YYYY hh:mm');
-    return moment(String(value)).format("MM/DD/YYYY");
-  }
+    if (value) {
+        // return moment(String(value)).format('MM/DD/YYYY hh:mm');
+        return moment(String(value)).format("MM/DD/YYYY");
+    }
 });

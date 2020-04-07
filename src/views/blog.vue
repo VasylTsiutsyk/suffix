@@ -1,15 +1,24 @@
 <template>
-  <section>
-    <h1>BLog</h1>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-    </ul>
-  </section>
+  <main>
+    <BlogBaner/>
+    <div class="container">
+
+    </div>
+    
+  </main>
 </template>
 
 <script>
+import BlogBaner from "@/components/blog-baner/blog-baner"
 export default {
-  
+  name: "blog",
+    metaInfo() {
+    return {
+      title: this.$title('Blog')
+      }
+  },
+  components: {
+    BlogBaner
+  }
 }
 </script>

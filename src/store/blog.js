@@ -55,7 +55,7 @@ export default {
       commit(mutt.SET_LOADED);
       return Promise.all([
         new Promise((resolve, reject) => {
-          http.get("/api/content/logos/articles").then(
+          http.get("/api/content/logos/article-categories").then(
             r => {
               commit(mutt.SET_ARTICLES, r.data.items);
               resolve(r.data);

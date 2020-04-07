@@ -1,0 +1,17 @@
+.articles-baner {
+    .baner {
+        &__wrap {
+            background-color: $color-base;
+            padding: 85px 0;
+            text-align: center;
+        }
+        &__title {
+            font-family: $font-base;
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 72px;
+            text-transform: uppercase;
+            color: $color-light;
+        }
+    }
+}

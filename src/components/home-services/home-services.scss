@@ -1,0 +1,52 @@
+.services {
+    &__list {
+        margin: 80px -20px 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__item {
+        width: calc(100% / 3 - 20px);
+        padding: 10px;
+        margin: 10px;
+    }
+    &__circle {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(0, 240, 181, 0.02);
+        border: 1px solid rgba(0, 240, 181, 0.5);
+    }
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &__title {
+        margin: 20px 0;
+        font-family: $font-base;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: $color-base;
+    }
+    &__text {
+        margin: 30px 0;
+        font-family: $font-base;
+        font-weight: normal;
+        font-size: 16.2px;
+        line-height: 26px;
+        color: $color-base;
+    }
+}
+
+.icon--red {
+    background: rgba(246, 16, 103, 0.02);
+    border: 1px solid rgba(246, 16, 103, 0.5);
+}
+
+.icon--orange {
+    background: rgba(246, 113, 16, 0.02);
+    border: 1px solid rgba(246, 113, 16, 0.5);
+}

@@ -1,0 +1,55 @@
+.baner-article {
+    .baner {
+        &__content-box {
+            width: 50%;
+            padding: 100px;
+            background-color: $color-base;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &__title {
+            margin-top: 60px;
+            font-family: $font-base;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 42px;
+            text-transform: uppercase;
+            color: $color-light;
+        }
+        &__intro {
+            margin-top: 30px;
+            font-family: $font-base;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+            color: $color-light;
+        }
+        &__btn {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 20px 65px;
+            border: 1px solid $color-light;
+            font-family: $font-base;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $color-light;
+            background-color: $color-base;
+            transition: $transition-base;
+            &:hover,
+            &:focus {
+                color: $color-base;
+                outline: none;
+            }
+            &:hover {
+                background-color: $color-hover;
+            }
+            &:focus {
+                background-color: $color-light;
+            }
+        }
+    }
+}

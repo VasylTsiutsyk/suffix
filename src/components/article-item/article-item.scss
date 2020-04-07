@@ -1,21 +1,17 @@
-.item {
-  width: calc(100% / 3 - 20px);
-  margin: 0 10px;
-
-  @include respond-below(xs) { 
-    width: 100%;
-  }
-}
-
-.img {
-  height: 200px;
-  width: 100%;  
-
-  @include respond-below(md_plus) { 
-    height: 180px;
-  }
-
-  @include respond-below(md) { 
-    height: 170px;
-  }
-}
+// .item {
+//   width: calc(100% / 3 - 20px);
+//   margin: 0 10px;
+//   @include respond-below(xs) { 
+//     width: 100%;
+//   }
+// }
+// .img {
+//   height: 200px;
+//   width: 100%;  
+//   @include respond-below(md_plus) { 
+//     height: 180px;
+//   }
+//   @include respond-below(md) { 
+//     height: 170px;
+//   }
+// }

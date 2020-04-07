@@ -6,7 +6,7 @@ import store from "@/store";
  * Route views
  * -----------
  */
-import Home from "@/views/index.vue";
+import Home from "@/views/Home.vue";
 import loginRoute from "@/views/login.vue";
 
 Vue.use(VueRouter);
@@ -24,9 +24,14 @@ const routes = [
     meta: { notProtected: true }
   },
   {
+    path: "/articles",
+    name: "articles",
+    component: () => import("@/views/Articles.vue")
+  },
+  {
     path: "/blog",
     name: "blog",
-    component: () => import("@/views/blog.vue")
+    component: () => import("@/views/Blog.vue")
   },
   {
     path: "/blog/:slug",

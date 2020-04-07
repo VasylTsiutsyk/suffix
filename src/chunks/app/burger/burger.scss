@@ -1,0 +1,93 @@
+    .burger-menu {
+        position: relative;
+    }
+    
+    #menu__toggle {
+        opacity: 1;
+        visibility: hidden;
+        position: absolute;
+        height: 1px;
+        width: 1px;
+        &:checked {
+            ~.menu__btn {
+                box-shadow: 0 0 10px rgba($color-base, 0.5);
+                background-color: $color-base;
+                color: $color-light;
+            }
+            ~.menu__btn .menu__ico {
+                background-color: $color-light;
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:nth-child(1) {
+                    transform: translateY(8px) rotate(45deg);
+                }
+                &:nth-child(3) {
+                    transform: translateY(-8px) rotate(-45deg);
+                }
+            }
+            ~.menu__list {
+                visibility: visible;
+                left: 0;
+                z-index: 4;
+            }
+        }
+    }
+    
+    .menu {
+        &__btn {
+            position: absolute;
+            z-index: 5;
+            width: 40px;
+            height: 40px;
+            padding: 11px 7px;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: $transition-base;
+            &:hover {
+                background: $color-hover;
+                .menu__ico {
+                    background-color: $color-light;
+                }
+            }
+        }
+        &__ico {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: $color-base;
+            transition: $transition-base;
+            &:nth-child(2) {
+                width: 75%;
+            }
+        }
+        &__list {
+            position: absolute;
+            visibility: hidden;
+            top: 60px;
+            left: -100%;
+            padding: 45px 0;
+            background-color: $color-light;
+            box-shadow: 0px 4px 22px rgba($color-base, 0.1);
+            transition: $transition-base;
+        }
+        &__item {
+            display: block;
+            padding: 10px 65px;
+            color: $color-base;
+            font-family: $font-base;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            transition: $transition-base;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }

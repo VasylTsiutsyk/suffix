@@ -1,0 +1,18 @@
+.footer {
+    background-color: $color-base;
+    margin-top: 90px;
+    padding: 55px 0 25px 0;
+    &__logo-wrap {
+        text-align: center;
+    }
+    &__copyright {
+        margin: 0 auto;
+        margin-top: 40px;
+        font-family: $font-base;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        color: $color-light;
+    }
+}

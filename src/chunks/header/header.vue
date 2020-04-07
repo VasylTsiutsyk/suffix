@@ -1,30 +1,43 @@
 <template>
-  <header>
-    <router-link to="/">
-      <img src="/svg/logo.svg" alt="" />
-    </router-link>
-
-    <div class="nav-wrap">
-      <button class="burger" :class="{ active }" @click="toogleActive">
-        <img src="/svg/burger.svg" alt="" />
-      </button>
-
-      <nav class="nav">
-        <button @click="go">Go Blog</button>
-
-        <router-link to="/">Home</router-link> |
-        <router-link to="/blog">Blog</router-link>
-      </nav>
+  <header class="header">
+    <div class="container-header">
+      <div class="header__wrap">
+        <!-- <transition name="fade" mode="out-in">
+          <button class="header__burger" @click="show = !show" >
+            <span class="header__burger-ico"></span>
+            <span class="header__burger-ico"></span>
+            <span class="header__burger-ico"></span>
+          </button>
+        </transition>
+        <transition name="fade">
+          <ul v-if="show" class="menu">
+            <li >1</li>
+            <li>2</li>
+          </ul>
+        </transition> -->
+          <Burger/>
+        <div class="header__logo-wrap">
+          <router-link to="/">
+            <img src="/svg/logo.svg" alt="logo" class="header__logo">
+            <!-- <img src="img/header-logo2.svg" alt="logo" class="header__logo2"> -->
+          </router-link>
+        </div>
+      </div>
     </div>
   </header>
 </template>
 
 <script>
+import Burger from '@/chunks/app/burger/burger'
 export default {
   data() {
     return {
-      active: false
+      active: false,
+      show: false
     };
+  },
+  components: {
+    Burger
   },
   methods: {
     go() {
