@@ -1,21 +1,20 @@
 <template>
   <div id="app">
-    <Loader v-if="loading"/>
+    <Loader v-if="loading" />
     <div v-else>
       <suffix-header />
       <router-view />
-      <suffix-footer/>
+      <suffix-footer />
     </div>
-    
   </div>
 </template>
 
 <script>
-export default  {
+export default {
   data: () => ({
     loading: false
-  }),
-}
+  })
+};
 </script>
 
 <style lang="scss">

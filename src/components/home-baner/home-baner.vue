@@ -42,11 +42,11 @@ export default {
   computed: {
     ...mapGetters("blog", {
       getTagById: "getTagById",
-      article: "firstArtice"
+      article: "firstArticle"
     })
   },
   created() {
-    this.$store.dispatch("blog/getArticles");
+    // this.$store.dispatch("blog/getArticles");
   }
 };
 </script>

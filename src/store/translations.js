@@ -21,7 +21,7 @@ export default {
       if (state.trans.length) return;
 
       return new Promise((resolve, reject) => {
-        http.get("/api/content/logos/translations/").then(
+        http.get("/api/content/ts-suffix/translations/").then(
           r => {
             commit(mutt.SET_TRANSLATIONS, r.data.items);
             resolve(r.data); // 200 status

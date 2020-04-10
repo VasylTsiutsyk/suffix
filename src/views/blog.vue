@@ -1,24 +1,21 @@
 <template>
   <main>
-    <BlogBaner/>
-    <div class="container">
-
-    </div>
-    
+    <BlogBaner />
+    <div class="container"></div>
   </main>
 </template>
 
 <script>
-import BlogBaner from "@/components/blog-baner/blog-baner"
+import BlogBaner from "@/components/blog-baner/blog-baner";
 export default {
   name: "blog",
-    metaInfo() {
+  metaInfo() {
     return {
-      title: this.$title('Blog')
-      }
+      title: this.$title("Blog")
+    };
   },
   components: {
     BlogBaner
   }
-}
+};
 </script>

@@ -8,13 +8,15 @@ import { i18n } from "@/plugins/i18n";
 import TitlePlugin from "@/plugins/title.plugin";
 
 import "@/global-register";
+
 Vue.use(TitlePlugin);
 Vue.use(VueMeta);
+
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App)
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }).$mount("#app");

@@ -22,11 +22,12 @@
           :to="'/'" 
           class="block__link link--small link--black"
         >
-          {{ $t(`label.${_getTag(data.categs)}`) }}
+          <!-- {{ $t(`label.${getAll(data.ref)}`) }} -->
+          {{ data.ref }}
         </router-link>
       </div>
     </div>
-    <h2 class="block__title">{{data.title}}</h2>
+    <h2 class="block__title">{{ data.title }}</h2>
     <router-link 
       :to="'/blog/' + data.slug"
     >
@@ -42,6 +43,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "@/assets/scss/settings.scss";
-@import "article-item.scss";
+  @import "article-item.scss";
 </style>

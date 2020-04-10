@@ -12,12 +12,12 @@ import translations from "@/store/translations";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {
-    auth,
-    blog,
-    translations
-  }
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: {
+        auth,
+        blog,
+        translations
+    }
 });
