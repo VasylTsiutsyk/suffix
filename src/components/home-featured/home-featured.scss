@@ -10,21 +10,40 @@
     &__item {
         width: calc(100% / 2 - 30px);
         margin: 15px;
+        overflow: hidden;
+        @include respond-below(sm) {
+            position: relative;
+        }
+        @include respond-below(xs) {
+            width: calc(100% - 30px);
+            margin: 15px;
+        }
     }
     &__title {
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-weight: 500;
         font-size: 24px;
         line-height: 36px;
-        color: $color-base;
+        color: var(--color-base);
         margin: 20px 0;
+        @include respond-below(sm) {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            margin-top: 15px;
+        }
     }
     &__intro {
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-weight: 300;
         font-size: 18px;
         line-height: 27px;
-        color: $color-base;
+        color: var(--color-base);
         margin: 20px 0;
+        @include respond-below(sm) {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+        }
     }
 }

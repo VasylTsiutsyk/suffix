@@ -3,11 +3,23 @@
         margin: 80px -20px 0;
         display: flex;
         flex-wrap: wrap;
+        @include respond-below(sm) {
+            margin: 40px -20px 0;
+        }
+        @include respond-below(xs) {
+            margin: 20px -20px 0;
+        }
     }
     &__item {
         width: calc(100% / 3 - 20px);
         padding: 10px;
         margin: 10px;
+        @include respond-below(sm) {
+            width: calc(100%/2 - 20px);
+        }
+        @include respond-below(xs) {
+            width: calc(100%);
+        }
     }
     &__circle {
         position: relative;
@@ -16,6 +28,14 @@
         border-radius: 50%;
         background-color: rgba(0, 240, 181, 0.02);
         border: 1px solid rgba(0, 240, 181, 0.5);
+        @include respond-below(sm) {
+            width: 60px;
+            height: 60px;
+        }
+        @include respond-below(xs) {
+            width: 50px;
+            height: 50px;
+        }
     }
     &__icon {
         position: absolute;
@@ -25,28 +45,38 @@
     }
     &__title {
         margin: 20px 0;
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-weight: 500;
         font-size: 18px;
         line-height: 27px;
-        color: $color-base;
+        color: var(--color-base);
+        @include respond-below(xs) {
+            font-size: 16px;
+            margin: 10px 0;
+        }
     }
     &__text {
         margin: 30px 0;
-        font-family: $font-base;
-        font-weight: normal;
+        font-family: var(--font-family-base);
         font-size: 16.2px;
         line-height: 26px;
-        color: $color-base;
+        color: var(--color-base);
+        @include respond-below(sm) {
+            margin: 20px 0;
+        }
+        @include respond-below(xs) {
+            margin: 10px 0;
+            font-size: 14px;
+        }
     }
 }
 
 .icon--red {
-    background: rgba(246, 16, 103, 0.02);
+    background-color: rgba(246, 16, 103, 0.02);
     border: 1px solid rgba(246, 16, 103, 0.5);
 }
 
 .icon--orange {
-    background: rgba(246, 113, 16, 0.02);
+    background-color: rgba(246, 113, 16, 0.02);
     border: 1px solid rgba(246, 113, 16, 0.5);
 }

@@ -28,18 +28,18 @@ export default {
             return new Promise((resolve, reject) => {
                 const body = new FormData();
                 body.set("grant_type", "client_credentials");
-                body.set("client_id", "logos:default");
+                body.set("client_id", "tsvv-suffix:default");
                 body.set("scope", "squidex-api");
                 body.set(
                     "client_secret",
-                    "mdjl7lxxzjc3rcuywnuycgkzvhw0xd7fsmpkhnehh0ix"
+                    "ve2myz3hfgtyyvrdqlhyzncfjchxx1jrnpbwr1vkxacx"
                 );
 
                 http.post("/identity-server/connect/token", body).then(
                     r => {
                         const token = r.data.access_token;
                         commit(mutt.SET_TOKEN, token);
-                        // dispatch("translations/getAll", null, { root: true });
+                        dispatch("translations/getAll", null, { root: true });
                         resolve(r.data);
                     },
                     ({ response }) => {

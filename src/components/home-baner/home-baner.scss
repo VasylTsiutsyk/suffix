@@ -1,69 +1,30 @@
-.baner {
-    &__wrap {
-        display: flex;
-        min-height: 570px;
-    }
-    &__img-box {
-        width: 50%;
-        position: relative;
-    }
-    &__img {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    &__content-box {
-        width: 50%;
-        padding: 100px;
-        background-color: $color-base;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__title {
-        margin-top: 60px;
-        font-family: $font-base;
-        font-weight: 500;
-        font-size: 28px;
-        line-height: 42px;
-        text-transform: uppercase;
-        color: $color-light;
-    }
-    &__intro {
-        margin-top: 30px;
-        font-family: $font-base;
-        font-weight: 300;
-        font-size: 14px;
-        line-height: 21px;
-        color: $color-light;
-    }
-    &__btn {
-        display: inline-block;
-        margin-top: 50px;
-        padding: 20px 65px;
-        border: 1px solid $color-light;
-        font-family: $font-base;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: $color-light;
-        background-color: $color-base;
-        transition: $transition-base;
-        &:hover,
-        &:focus {
-            color: $color-base;
-            outline: none;
+.home-baner {
+    .baner {
+        &__wrap {
+            display: flex;
+            min-height: 570px;
+            @include respond-below(sm) {
+                min-height: 350px;
+            }
+            @include respond-below(xs) {
+                flex-wrap: wrap;
+            }
         }
-        &:hover {
-            background-color: $color-hover;
+        &__img-box {
+            width: 50%;
+            position: relative;
+            @include respond-below(xs) {
+                min-height: 290px;
+                width: 100%;
+            }
         }
-        &:focus {
-            background-color: $color-light;
+        &__img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }

@@ -3,7 +3,7 @@
         position: relative;
         margin: 120px 0;
         display: flex;
-        background-color: #9D9D9D;
+        background-color: var(--color-hover);
     }
     &__img-box {
         position: absolute;
@@ -16,32 +16,65 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
+        @include respond-below(md) {
+            width: 80%;
+        }
+        @include respond-below(sm) {
+            width: 100%;
+        }
     }
     &__content-box {
         width: 100%;
         z-index: 5;
         padding: 140px 140px 140px 400px;
+        @include respond-below(md) {
+            padding: 50px;
+            max-height: 450px;
+            overflow: auto;
+        }
+        @include respond-below(sm) {
+            padding: 40px;
+            max-height: 250px;
+            overflow: auto;
+        }
     }
     &__title {
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-style: normal;
         font-weight: 800;
         font-size: 24px;
         line-height: 207.9%;
         letter-spacing: 4px;
         text-transform: uppercase;
-        color: $color-light;
+        color: var(--color-light);
     }
     &__list {
         display: flex;
         flex-wrap: wrap;
         margin-left: -60px;
+        @include respond-below(md) {
+            margin-left: -60px;
+        }
+        @include respond-below(sm) {
+            margin-left: -30px;
+        }
+        @include respond-below(xs) {
+            margin-left: 0px;
+        }
     }
     &__item {
         margin: 30px 60px;
         width: calc(50% - 120px);
-    }
-    &__item-img {
-        // width: 170px;
+        @include respond-below(md) {
+            margin: 30px;
+        }
+        @include respond-below(sm) {
+            margin: 20px;
+            width: calc(100% - 50px);
+        }
+        @include respond-below(xs) {
+            margin: 10px;
+            width: calc(100%);
+        }
     }
 }

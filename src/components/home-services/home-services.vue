@@ -3,35 +3,23 @@
     <div class="container">
       <div class="services__wrap">
         <ul class="services__list">
-          <li class="services__item">
-            <div class="services__circle ">
-              <img class="services__icon" src="" alt="" />
+          <li
+            class="services__item"
+            :key="service.id"
+            v-for="service in services"
+          >
+            <div class="services__circle" :class="color">
+              <img
+                class="services__icon"
+                :src="service.data.icon ? service.data.icon[0] : ''"
+                alt="service ico"
+              />
             </div>
-            <h6 class="services__title">Webdesign</h6>
+            <h3 class="services__title title--orange">
+              {{ service.data.title }}
+            </h3>
             <p class="services__text">
-              Tincidunt lobortis feugiat vivamus at augue eget. Risus feugiat in
-              ante metus dictum. Amet aliquam id diam maecenas.
-            </p>
-          </li>
-          <li class="services__item">
-            <div class="services__circle icon--red">
-              <img class="services__icon" src="" alt="" />
-            </div>
-            <h6 class="services__title title--red">Webdesign</h6>
-            <p class="services__text">
-              Eget nulla facilisi etiam dignissim diam quis enim lobortis
-              scelerisque. Eu feugiat pretium nibh ipsum consequat nisl vel
-              pretium.
-            </p>
-          </li>
-          <li class="services__item">
-            <div class="services__circle icon--orange">
-              <img class="services__icon" src="" alt="" />
-            </div>
-            <h6 class="services__title title--orange">Webdesign</h6>
-            <p class="services__text">
-              Eu augue ut lectus arcu bibendum at. Pellentesque nec nam aliquam
-              sem et tortor consequat.
+              {{ service.data.content }}
             </p>
           </li>
         </ul>
@@ -44,15 +32,19 @@
 import { mapGetters } from "vuex";
 export default {
   name: "services",
-  computed: mapGetters("blog", ["services"]),
+  computed: {
+    ...mapGetters("services", ["services"]),
+    color() {
+      const colors = ["icon--red", "icon--orange"];
+      return colors[Math.floor(Math.random() * 2)];
+    }
+  },
   created() {
-    // this.$store.dispatch("blog/getServices").then(() => {
-    //   console.log("Services loaded");
-    // });
+    this.$store.dispatch("services/getServices");
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "home-services.scss";
 </style>

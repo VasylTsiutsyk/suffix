@@ -2,60 +2,22 @@
     &__wrap {
         position: relative;
         padding: 45px 50px;
+        @include respond-below(sm) {
+            padding: 25px 0;
+        }
+    }
+    &__logo {
+        @include respond-below(sm) {
+            display: none;
+        }
     }
     &__logo2 {
         display: none;
+        @include respond-below(sm) {
+            display: inline-block;
+        }
     }
     &__logo-wrap {
         text-align: center;
-    }
-    &__burger {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        padding: 11px 7px;
-        border: none;
-        box-shadow: none;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: space-between;
-        cursor: pointer;
-        transition: $transition-base;
-        &:hover {
-            background: $color-hover;
-            .header__burger-ico {
-                background-color: $color-light;
-            }
-        }
-        &:focus {
-            box-shadow: 0 0 10px rgba($color-base, 0.5);
-            background-color: $color-base;
-            outline: none;
-            .header__burger-ico {
-                background-color: $color-light;
-            }
-            .header__burger-ico {
-                &:nth-child(2) {
-                    opacity: 0;
-                }
-                &:nth-child(1) {
-                    transform: translateY(8px) rotate(45deg);
-                }
-                &:nth-child(3) {
-                    transform: translateY(-8px) rotate(-45deg);
-                }
-            }
-        }
-    }
-    &__burger-ico {
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: $color-base;
-        transition: $transition-base;
-        &:nth-child(2) {
-            width: 75%;
-        }
     }
 }

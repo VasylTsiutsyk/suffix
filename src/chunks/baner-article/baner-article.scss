@@ -1,55 +1,69 @@
-.baner-article {
-    .baner {
-        &__content-box {
-            width: 50%;
-            padding: 100px;
-            background-color: $color-base;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+.baner {
+    &__content-box {
+        width: 50%;
+        padding: 80px;
+        background-color: var(--color-base);
+        @include respond-below(sm) {
+            padding: 30px;
         }
-        &__title {
-            margin-top: 60px;
-            font-family: $font-base;
-            font-weight: 500;
-            font-size: 28px;
-            line-height: 42px;
-            text-transform: uppercase;
-            color: $color-light;
+        @include respond-below(xs) {
+            width: 100%;
+            padding: 20px;
         }
-        &__intro {
-            margin-top: 30px;
-            font-family: $font-base;
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 21px;
-            color: $color-light;
+    }
+    &__title {
+        margin-top: 60px;
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 42px;
+        text-transform: uppercase;
+        color: var(--color-light);
+        @include respond-below(sm) {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 27px;
         }
-        &__btn {
-            display: inline-block;
-            margin-top: 50px;
-            padding: 20px 65px;
-            border: 1px solid $color-light;
-            font-family: $font-base;
-            font-weight: 500;
+    }
+    &__intro {
+        margin-top: 30px;
+        font-family: var(--font-family-base);
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        color: var(--color-light);
+        @include respond-below(sm) {
+            margin-top: 20px;
             font-size: 12px;
             line-height: 18px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: $color-light;
-            background-color: $color-base;
-            transition: $transition-base;
-            &:hover,
-            &:focus {
-                color: $color-base;
-                outline: none;
-            }
-            &:hover {
-                background-color: $color-hover;
-            }
-            &:focus {
-                background-color: $color-light;
-            }
+        }
+    }
+    &__btn {
+        display: inline-block;
+        margin-top: 50px;
+        padding: 20px 65px;
+        border: 1px solid var(--color-light);
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--color-light);
+        background-color: var(--color-base);
+        transition: var(--transition-base);
+        @include hover-state {
+            background-color: var(--color-hover);
+            color: var(--color-base);
+        }
+        &:focus {
+            background-color: var(--color-light);
+            color: var(--color-base);
+            outline: none;
+        }
+        @include respond-below(sm) {
+            margin-top: 30px;
+            padding: 10px 20px;
         }
     }
 }

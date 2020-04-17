@@ -2,7 +2,6 @@
   <div class="loader-ring"></div>
 </template>
 
-
 <style lang="scss">
-  @import "loader.scss"
+@import "loader.scss";
 </style>

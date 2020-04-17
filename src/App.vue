@@ -1,21 +1,12 @@
 <template>
   <div id="app">
-    <Loader v-if="loading" />
-    <div v-else>
-      <suffix-header />
+    <suffix-header />
+    <transition name="page">
       <router-view />
-      <suffix-footer />
-    </div>
+    </transition>
+    <suffix-footer />
   </div>
 </template>
-
-<script>
-export default {
-  data: () => ({
-    loading: false
-  })
-};
-</script>
 
 <style lang="scss">
 @import "@/assets/scss/global.scss";

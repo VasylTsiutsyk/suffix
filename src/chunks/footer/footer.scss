@@ -1,18 +1,24 @@
 .footer {
-    background-color: $color-base;
+    background-color: var(--color-base);
     margin-top: 90px;
     padding: 55px 0 25px 0;
+    @include respond-below(sm) {
+        margin-top: 70px;
+    }
+    @include respond-below(xs) {
+        margin-top: 40px;
+    }
     &__logo-wrap {
         text-align: center;
     }
     &__copyright {
         margin: 0 auto;
         margin-top: 40px;
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-weight: 300;
         font-size: 12px;
         line-height: 18px;
         text-align: center;
-        color: $color-light;
+        color: var(--color-light);
     }
 }

@@ -1,9 +1,9 @@
-<template>
-  <li class="block__item">
+<template name="component-name">
+  <li class="featured__item">
     <div class="block__img-wrap">
       <img
-        :src="data.image ? data.image[0] : ''"
-        alt="article-image"
+        :src="article.data.image ? article.data.image[0] : ''"
+        alt="it`s place for great image"
         class="block__img"
       />
       <div class="block__overlay"></div>
@@ -11,36 +11,36 @@
     <div class="block__nav">
       <div class="block__date-wrap">
         <time
-          :datetime="data.date"
+          :datetime="article.data.date"
           class="block__date date--small date--black "
         >
-          {{ data.date | formatDate }}
+          {{ article.data.date | formatDate }}
         </time>
       </div>
       <div class="block__link-wrap">
         <router-link
           :to="{
-            path: `articles?tag=${_getTag(data.tag)}`,
-            query: { tag: _getTag(data.tag) }
+            path: `articles?tag=${_getTag(article.data.tag)}`,
+            query: { tag: _getTag(article.data.tag) }
           }"
           class="block__link link--small link--black"
         >
-          {{ $t(`label.${_getTag(data.tag)}`) }}
+          {{ $t(`label.${_getTag(article.data.tag)}`) }}
         </router-link>
       </div>
     </div>
-    <h2 class="block__title">{{ data.title }}</h2>
-    <router-link :to="'/articles/' + data.slug" class="block__link link--black">
-      {{ $t("global.read-more") }}
-    </router-link>
+    <h3 class="featured__title">
+      {{ article.data.title }}
+    </h3>
+    <p class="featured__intro" v-html="article.data.intro"></p>
   </li>
 </template>
 
 <script>
 export default {
-  name: "article-item",
+  name: "featured-item",
   props: {
-    data: {
+    article: {
       type: Object,
       required: true
     }

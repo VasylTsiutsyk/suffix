@@ -9,8 +9,8 @@
         height: 64px;
         margin: 8px;
         border-radius: 50%;
-        border: 6px solid $color-base;
-        border-color: $color-base transparent $color-base transparent;
+        border: 6px solid var(--color-base);
+        border-color: var(--color-base) transparent var(--color-base) transparent;
         animation: loader-ring 1.2s linear infinite;
     }
 }

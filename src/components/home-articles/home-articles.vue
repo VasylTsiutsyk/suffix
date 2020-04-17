@@ -10,8 +10,8 @@
           />
         </ul>
         <div class="block__btn-wrap">
-          <router-link :to="'/'" class="block__btn">
-            SEE ALL
+          <router-link :to="'/articles'" class="block__btn">
+            {{ $t("global.see-all") }}
           </router-link>
         </div>
       </div>
@@ -23,11 +23,16 @@
 import ArticleItem from "@/components/article-item/article-item";
 
 export default {
-  props: ["tag", "ignoreFirst"],
+  name: "home-articles",
+  props: {
+    tag: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
     articlesByTag() {
       const articles = this.$store.state.blog.articlesHome[this.tag.data.title];
-      if (this.ignoreFirst) return articles.splice(1);
       return articles;
     }
   },
@@ -37,6 +42,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "home-articles.scss";
 </style>

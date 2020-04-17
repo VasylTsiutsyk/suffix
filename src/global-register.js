@@ -11,10 +11,8 @@ import Footer from "@/chunks/footer/footer";
 Vue.component("suffix-footer", Footer);
 import BanerArticle from "@/chunks/baner-article/baner-article";
 Vue.component("BanerArticle", BanerArticle);
-
-import Collapse from "vue-collapse";
+import Collapse from "@/chunks/app/collapse/collapse";
 Vue.component("Collapse", Collapse);
-
 import Loader from "@/chunks/app/loader/loader";
 Vue.component("Loader", Loader);
 
@@ -40,7 +38,6 @@ Vue.mixin(mixin);
 import moment from "moment";
 Vue.filter("formatDate", function(value) {
     if (value) {
-        // return moment(String(value)).format('MM/DD/YYYY hh:mm');
         return moment(String(value)).format("MM/DD/YYYY");
     }
 });

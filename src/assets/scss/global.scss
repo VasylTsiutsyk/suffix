@@ -1,8 +1,4 @@
 @import './settings.scss';
-// add global, btn, components, normalize + other
-
-/* global */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,83 +9,170 @@ ul {
     list-style: none;
 }
 
+body {
+    &.overflow {
+        overflow: hidden;
+    }
+}
+
 .container {
     max-width: 1180px;
     padding: 0 20px;
     margin: 0 auto;
-    outline: 1px solid $color-base;
 }
 
-
-/* global_block */
-
-.block__wrap {
-    margin-top: 50px;
-    max-width: 100vw;
+// fade \\
+.page-enter-active,
+.page-leave-active {
+    transition: var(--transition-fade);
 }
 
-.block__title {
-    margin: 20px 0;
-    font-family: $font-base;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    text-transform: uppercase;
-    color: $color-text;
+.page-enter,
+.page-leave-to {
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
-.block__btn-wrap {
-    text-align: center;
-}
-
-.block__item {
-    width: calc(100% / 3 - 28px);
-    margin: 14px;
-}
-
-.block__list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -14px;
-    overflow: auto;
-}
-
-.block__img-wrap {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 66.12%;
-    &:hover {
-        .block__overlay {
-            background-color: rgba($color-base, 0.3);
-        }
-        .block__img {
-            transform: scale(1.1);
+// global block \\
+.block {
+    &__wrap {
+        margin-top: 50px;
+        max-width: 100vw;
+        @include respond-below(sm) {
+            margin-top: 30px;
         }
     }
-}
-
-.block__img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    transition: $transition-base;
-}
-
-.block__overlay {
-    position: absolute;
-    transition: $transition-base;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($color-base, 0.1);
-}
-
-.block__date {
-    font-family: $font-base;
-    font-weight: 500;
+    &__title {
+        margin: 20px 0;
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        text-transform: uppercase;
+        color: var(--color-text);
+    }
+    &__btn-wrap {
+        text-align: center;
+    }
+    &__item {
+        width: calc(100% / 3 - 28px);
+        margin: 14px;
+        @include respond-below(xs) {
+            min-width: 220px;
+        }
+    }
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -14px;
+        margin-bottom: 80px;
+        overflow: auto;
+        @include respond-below(md) {
+            margin-bottom: 60px;
+        }
+        @include respond-below(sm) {
+            margin-bottom: 30px;
+        }
+        @include respond-below(xs) {
+            flex-wrap: nowrap;
+            margin-bottom: 10px;
+        }
+    }
+    &__img-wrap {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 66.12%;
+        @include hover-state {
+            .block__overlay {
+                background-color: rgba($color-base, 0.3);
+            }
+            .block__img {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &__img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        transition: var(--transition-base);
+    }
+    &__overlay {
+        position: absolute;
+        transition: var(--transition-base);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($color-base, 0.1);
+    }
+    &__date {
+        font-family: var(--font-family-base);
+        font-weight: 500;
+    }
+    &__intro,
+    &__content {
+        margin: 20px 0;
+        font-family: var(--font-family-base);
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+        color: var(--color-text);
+        @include respond-below(sm) {
+            font-size: 16px;
+            line-height: 24px;
+            margin-top: 15px;
+        }
+    }
+    &__link {
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        text-decoration-line: underline;
+        text-transform: uppercase;
+        text-align: right;
+    }
+    &__btn {
+        display: inline-block;
+        min-width: 220px;
+        margin: 10px;
+        padding: 8px 70px;
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--color-light);
+        background-color: var(--color-secondary);
+        border: 2px solid var(--color-secondary);
+        transition: var(--transition-base);
+        cursor: pointer;
+        @include hover-state {
+            background-color: var(--color-hover);
+            border-color: var(--color-hover);
+        }
+        &:focus {
+            background-color: var(--color-light);
+            color: var(--color-base);
+            outline: none;
+        }
+        @include respond-below(xs) {
+            margin: 10px auto;
+            width: 100%;
+        }
+    }
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        @include respond-below(xs) {
+            margin-top: 5px;
+        }
+    }
 }
 
 .date--small {
@@ -106,29 +189,18 @@ ul {
 
 .date--black,
 .link--black {
-    color: $color-base;
+    color: var(--color-base);
 }
 
 .date--white,
 .link--white {
-    color: $color-light;
+    color: var(--color-light);
 }
 
-.block__intro {
-    margin-top: 20px;
-    font-family: $font-base;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 27px;
-    color: $color-text;
-}
-
-.block__link {
-    font-family: $font-base;
-    font-weight: 500;
-    text-decoration-line: underline;
-    text-transform: uppercase;
-    text-align: right;
+.link--white {
+    @include respond-below(sm) {
+        display: none;
+    }
 }
 
 .link--large {
@@ -139,39 +211,4 @@ ul {
 .link--small {
     font-size: 12px;
     line-height: 18px;
-}
-
-.block__btn {
-    display: inline-block;
-    min-width: 240px;
-    margin: 10px;
-    padding: 8px 70px;
-    font-family: $font-base;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: $color-light;
-    background-color: $color-secondary;
-    border: 2px solid $color-secondary;
-    transition: $transition-base;
-    cursor: pointer;
-    &:hover {
-        background-color: $color-hover;
-        border-color: $color-hover;
-    }
-    &:focus {
-        background-color: $color-light;
-        color: $color-base;
-        outline: none;
-    }
-}
-
-.block__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
 }

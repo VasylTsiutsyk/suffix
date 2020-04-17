@@ -1,48 +1,51 @@
 <template name="component-name">
-  <div class="baner-article">
-    <div class="baner__content-box">
-      <div class="baner__content">
-        <div class="block__nav">
-          <div class="block__date-wrap">
-            <time :datetime="article.data.date" class="block__date date--large date--white ">
-              {{ article.data.date | formatDate }}
-            </time>
-          </div>
-          <div class="block__link-wrap">
-            <router-link :to="'/'" class="block__link link--large link--white">
-              {{ $t(`label.${_getTag(article.data.categs)}`) }}
-            </router-link>
-          </div>
+  <div class="baner__content-box">
+    <div class="baner__content">
+      <div class="block__nav">
+        <div class="block__date-wrap">
+          <time
+            :datetime="banerArticle.data.date"
+            class="block__date date--large date--white "
+          >
+            {{ banerArticle.data.date | formatDate }}
+          </time>
         </div>
-        <h2 class="baner__title">{{ article.data.title }}</h2>
-        <p class="baner__intro" v-html="article.data.intro"></p>
-        <router-link :to="'/blog/' + article.data.slug" class="baner__btn">
-          Read more
-        </router-link>
+        <div class="block__link-wrap">
+          <router-link
+            :to="{
+              path: `articles?tag=${_getTag(banerArticle.data.tag)}`,
+              query: { tag: _getTag(banerArticle.data.tag) }
+            }"
+            class="block__link link--large link--white"
+          >
+            {{ $t(`label.${_getTag(banerArticle.data.tag)}`) }}
+          </router-link>
+        </div>
       </div>
+      <h2 class="baner__title">{{ banerArticle.data.title }}</h2>
+      <p class="baner__intro" v-html="banerArticle.data.intro"></p>
+      <router-link
+        :to="'/articles/' + banerArticle.data.slug"
+        class="baner__btn"
+      >
+        {{ $t("global.read-more") }}
+      </router-link>
     </div>
   </div>
 </template>
 
-
 <script>
-import { mapGetters } from "vuex";
 export default {
-  computed: {
-    ...mapGetters("blog", {
-      getTagById: "getTagById",
-      article: "firstArtice"
-    })
-  },
-  created() {
-    this.$store.dispatch("blog/getArticles");
+  name: "baner-article",
+  props: {
+    banerArticle: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-  @import "baner-article.scss"
+<style lang="scss">
+@import "baner-article.scss";
 </style>
-
-
-

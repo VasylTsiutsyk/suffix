@@ -9,19 +9,19 @@
 
     <ul class="menu__list">
       <li>
-        <router-link class="menu__item" to="/">Home</router-link>
+        <router-link class="menu__item" to="/">
+          {{ $t("global.go-home") }}
+        </router-link>
       </li>
       <li>
-        <router-link class="menu__item" to="/blog">Blog</router-link>
-      </li>
-      <li>
-        <router-link class="menu__item" to="/articles">Articles</router-link>
+        <router-link class="menu__item" to="/articles">
+          {{ $t("global.articles") }}
+        </router-link>
       </li>
     </ul>
   </div>
 </template>
 
-
 <style lang="scss">
-  @import "burger.scss"
+@import "burger.scss";
 </style>

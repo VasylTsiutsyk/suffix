@@ -1,0 +1,14 @@
+.articles-item-baner {
+    padding: 100px;
+    margin-bottom: 60px;
+    background-color: var(--color-base);
+    .baner {
+        &__intro {
+            font-family: var(--font-family-base);
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+            color: var(--color-light);
+        }
+    }
+}

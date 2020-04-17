@@ -1,17 +1,29 @@
 .articles-baner {
-    .baner {
-        &__wrap {
-            background-color: $color-base;
-            padding: 85px 0;
-            text-align: center;
+    &__wrap {
+        background-color: var(--color-base);
+        padding: 85px 0;
+        margin-bottom: 20px;
+        text-align: center;
+        @include respond-below (sm) {
+            padding: 50px 0;
         }
-        &__title {
-            font-family: $font-base;
-            font-weight: 500;
-            font-size: 48px;
-            line-height: 72px;
-            text-transform: uppercase;
-            color: $color-light;
+        @include respond-below (xs) {
+            padding: 30px 0;
+        }
+    }
+    &__title {
+        font-family: var(--font-family-base);
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 72px;
+        text-transform: uppercase;
+        color: var(--color-light);
+        @include respond-below (sm) {
+            font-size: 40px;
+            line-height: 50px;
+        }
+        @include respond-below (xs) {
+            font-size: 30px;
         }
     }
 }

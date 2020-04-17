@@ -1,20 +1,15 @@
 <template>
   <main>
     <Loader v-if="loading" />
-
     <div v-else>
-      <HomeBaner v-if="false" :tag="tagFirst" />
+      <HomeBaner :tag="tagFirst" />
       <HomeServices />
-      <HomeFeatured />
-
+      <HomeFeatured :tag="tagFirst" />
       <HomeArticles :tag="tagFirst" />
-
       <HomeClients />
       <HomeSubscribe />
-
       <HomeArticles :tag="tag" :key="tag.id" v-for="tag in tagExceptFirst" />
-
-      <!-- <HomeCollapse /> -->
+      <Collapse />
     </div>
   </main>
 </template>
@@ -26,7 +21,6 @@ import HomeServices from "@/components/home-services/home-services";
 import HomeClients from "@/components/home-clients/home-clients";
 import HomeSubscribe from "@/components/home-subscribe/home-subscribe";
 import HomeArticles from "@/components/home-articles/home-articles";
-// import HomeCollapse from "@/components/home-collapse/home-collapse";
 import HomeFeatured from "@/components/home-featured/home-featured";
 
 export default {
@@ -46,9 +40,6 @@ export default {
     this.$store.dispatch("blog/getArticlesForHome").then(() => {
       this.loading = false;
     });
-    this.$store.dispatch("blog/getCollapse").then(() => {
-      this.loading = false;
-    });
   },
   components: {
     HomeBaner,
@@ -56,7 +47,6 @@ export default {
     HomeClients,
     HomeSubscribe,
     HomeArticles,
-    // HomeCollapse,
     HomeFeatured
   }
 };

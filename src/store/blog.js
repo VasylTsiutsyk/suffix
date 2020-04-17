@@ -1,11 +1,13 @@
 import { http } from "@/plugins/http";
 import Vue from "vue";
+import router from "@/router";
 
 const mutt = {
     SET_HOME_ARTICLES: "SET_HOME_ARTICLES",
     SET_SINGLE_ARCTICLE: "SET_SINGLE_ARCTICLE",
     DEL_SINGLE_ARCTICLE: "DEL_SINGLE_ARCTICLE",
     SET_ARTICLES: "SET_ARTICLES",
+    SET_FILT_ARTICLES: "SET_FILT_ARTICLES",
     SET_SERVICES: "SET_SERVICES",
     SET_COLLAPSE: "SET_COLLAPSE",
     SET_TAGS: "SET_TAGS",
@@ -19,15 +21,18 @@ export default {
     state: {
         articlesHome: {},
         articles: [],
+        filteredArticles: [],
         tags: [],
-        services: [],
-        collapseItems: [],
         singleArticle: null,
         loaded: false
     },
     mutations: {
         [mutt.SET_ARTICLES](state, articles) {
             state.articles = articles;
+        },
+
+        [mutt.SET_FILT_ARTICLES](state, articles) {
+            state.filteredArticles = articles;
         },
 
         [mutt.SET_HOME_ARTICLES](state, { tag, data }) {
@@ -37,12 +42,7 @@ export default {
         [mutt.SET_TAGS](state, tags) {
             state.tags = tags;
         },
-        [mutt.SET_COLLAPSE](state, collapseItems) {
-            state.collapseItems = collapseItems;
-        },
-        [mutt.SET_SERVICES](state, services) {
-            state.services = services;
-        },
+
         [mutt.SET_LOADED](state) {
             state.loaded = true;
         },
@@ -54,7 +54,9 @@ export default {
         }
     },
     actions: {
-        getTags({ commit }) {
+        getTags({ commit, state }) {
+            if (state.loaded) return;
+            commit(mutt.SET_LOADED);
             return new Promise((resolve, reject) => {
                 http.get("/api/content/tsvv-suffix/categories").then(
                     r => {
@@ -67,32 +69,7 @@ export default {
                 );
             });
         },
-        getServices({ commit }) {
-            return new Promise((resolve, reject) => {
-                http.get("/api/content/tsvv-suffix/services").then(
-                    r => {
-                        commit(mutt.SET_SERVICES, r.data.items);
-                        resolve(r.data);
-                    },
-                    ({ response }) => {
-                        reject(response.data);
-                    }
-                );
-            });
-        },
-        getCollapse({ commit }) {
-            return new Promise((resolve, reject) => {
-                http.get("/api/content/tsvv-suffix/collapse").then(
-                    r => {
-                        commit(mutt.SET_COLLAPSE, r.data.items);
-                        resolve(r.data);
-                    },
-                    ({ response }) => {
-                        reject(response.data);
-                    }
-                );
-            });
-        },
+
         getArticles({ commit, state, dispatch }) {
             if (state.loaded) return;
             commit(mutt.SET_LOADED);
@@ -121,10 +98,12 @@ export default {
                     })
                     .then(
                         r => {
-                            commit(
-                                mutt.SET_SINGLE_ARCTICLE,
-                                r.data.items[0] ? r.data.items[0].data : null
-                            );
+                            const data = r.data.items[0];
+                            if (data) {
+                                commit(mutt.SET_SINGLE_ARCTICLE, r.data.items[0].data);
+                            } else {
+                                router.replace("/404");
+                            }
                             resolve(r.data);
                         },
                         ({ response }) => {
@@ -137,32 +116,31 @@ export default {
             const objectWithSettings = tagId ?
                 {
                     params: {
-                        $filter: `data/title/iv eq '${tagId}'`
+                        $filter: `data/tag/iv eq '${tagId}'`
                     }
                 } :
                 null;
             return Promise.all([
-                (new Promise((resolve, reject) => {
-                        http
-                            .get("/api/content/tsvv-suffix/articles", objectWithSettings)
-                            .then(
-                                r => {
-                                    commit(mutt.SET_FILT_ARTICLES, r.data.items);
-                                    resolve(r.data);
-                                },
-                                ({ response }) => {
-                                    reject(response.data);
-                                }
-                            );
-                    }),
-                    dispatch("getTags"))
+                new Promise((resolve, reject) => {
+                    http
+                        .get("/api/content/tsvv-suffix/articles", objectWithSettings)
+                        .then(
+                            r => {
+                                commit(mutt.SET_FILT_ARTICLES, r.data.items);
+                                resolve(r.data);
+                            },
+                            ({ response }) => {
+                                reject(response.data);
+                            }
+                        );
+                }),
+                dispatch("getTags")
             ]);
         },
+
         setArticlesWithTag({ state, commit }) {
             const allRequestForTags = state.tags.map((tag, i) => {
                 return new Promise((resolve, reject) => {
-                    console.log(tag);
-
                     const objectWithSettings = {
                         params: {
                             $filter: `data/tag/iv eq '${tag.id}'`,
@@ -199,12 +177,15 @@ export default {
             return state.tags[0] || null;
         },
         tagExceptFirst(state) {
-            return state.tags.splice(1) || [];
+            return state.tags.slice(1) || [];
         },
         getTagById(state) {
             return function(id) {
                 return state.tags.find(i => i.id === id);
             };
+        },
+        articles(state) {
+            return state.articles;
         },
         articlesCount(state) {
             return state.articles.length;
@@ -213,13 +194,7 @@ export default {
             return state.articles[0] || null;
         },
         exceptFirstArticles(state) {
-            return state.articles.splice(1) || [];
-        },
-        collapseItems(state) {
-            return state.collapseItems || [];
-        },
-        services(state) {
-            return state.services || [];
+            return state.articles.slice(1) || [];
         }
     }
 };

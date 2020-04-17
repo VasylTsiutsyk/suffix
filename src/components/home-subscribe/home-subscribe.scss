@@ -3,10 +3,24 @@
         margin-top: 70px;
         min-height: 360px;
         display: flex;
+        @include respond-below(md) {
+            margin-top: 60px;
+        }
+        @include respond-below(sm) {
+            margin-top: 60px;
+            min-height: 275px;
+        }
+        @include respond-below(xs) {
+            flex-wrap: wrap;
+        }
     }
     &__img-box {
         position: relative;
         width: 50%;
+        @include respond-below(xs) {
+            width: 100%;
+            min-height: 270px;
+        }
     }
     &__img {
         position: absolute;
@@ -19,46 +33,63 @@
     &__content-box {
         width: 50%;
         padding: 100px;
-        background-color: $color-base;
+        background-color: var(--color-base);
         display: flex;
         justify-content: center;
         align-items: center;
+        @include respond-below(md) {
+            padding: 70px;
+        }
+        @include respond-below(sm) {
+            padding: 55px;
+        }
+        @include respond-below(xs) {
+            width: 100%;
+            padding: 10px;
+            min-height: 175px;
+        }
     }
     &__content {
         text-align: center;
     }
     &__title {
-        font-family: $font-base;
+        font-family: var(--font-family-base);
         font-weight: 500;
         font-size: 34px;
         line-height: 51px;
-        color: $color-light;
+        text-transform: uppercase;
+        color: var(--color-light);
+        @include respond-below(sm) {
+            font-size: 18px;
+            line-height: 27px;
+        }
     }
     &__btn {
         display: inline-block;
         padding: 10px 45px;
         margin-top: 20px;
-        border: 1px solid $color-light;
-        font-family: $font-base;
+        border: 1px solid var(--color-light);
+        font-family: var(--font-family-base);
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
         text-transform: uppercase;
         text-decoration: none;
-        color: $color-light;
-        background-color: $color-base;
-        transition: $transition-base;
+        color: var(--color-light);
+        background-color: var(--color-base);
+        transition: var(--transition-base);
         cursor: pointer;
-        &:hover,
-        &:focus {
-            color: $color-base;
+        &:focus,
+        &:active {
+            color: var(--color-base);
             outline: none;
         }
-        &:hover {
-            background-color: $color-hover;
+        @include hover-state {
+            background-color: var(--color-hover);
+            border-color: var(--color-hover);
         }
         &:focus {
-            background-color: $color-light;
+            background-color: var(--color-light);
         }
     }
 }
