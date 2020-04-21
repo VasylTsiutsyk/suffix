@@ -7,86 +7,18 @@
         <div class="clients__content-box">
           <h2 class="clients__title">{{ $t("global.our-clients") }}</h2>
           <ul class="clients__list">
-            <li class="clients__item">
-              <router-link :to="'/'">
+            <li
+              class="clients__item"
+              :key="client.id"
+              v-for="client in clients"
+            >
+              <a :href="client.data.link" target="_blank">
                 <img
-                  src="/svg/Vector (1).svg"
-                  alt=""
+                  :src="client.data.image ? client.data.image[0] : ''"
+                  alt="client svg"
                   class="clients__item-img"
                 />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (1).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (1).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
-            </li>
-            <li class="clients__item">
-              <router-link :to="'/'">
-                <img
-                  src="/svg/Vector (2).svg"
-                  alt=""
-                  class="clients__item-img"
-                />
-              </router-link>
+              </a>
             </li>
           </ul>
         </div>
@@ -94,6 +26,19 @@
     </div>
   </section>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  name: "clients",
+  computed: {
+    ...mapGetters("clients", ["clients"])
+  },
+  created() {
+    this.$store.dispatch("clients/getClients");
+  }
+};
+</script>
 
 <style lang="scss">
 @import "home-clients.scss";

@@ -18,7 +18,7 @@ export default {
     },
     actions: {
         getAll({ state, commit }) {
-            if (state.trans.length) return;
+            if (state.trans.length) return Promise.resolve();
 
             return new Promise((resolve, reject) => {
                 http.get("/api/content/tsvv-suffix/translations").then(

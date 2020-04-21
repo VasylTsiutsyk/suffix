@@ -11,7 +11,7 @@
             <div class="services__circle" :class="color">
               <img
                 class="services__icon"
-                :src="service.data.icon ? service.data.icon[0] : ''"
+                :src="service.data.image ? service.data.image[0] : ''"
                 alt="service ico"
               />
             </div>
@@ -36,7 +36,7 @@ export default {
     ...mapGetters("services", ["services"]),
     color() {
       const colors = ["icon--red", "icon--orange"];
-      return colors[Math.floor(Math.random() * 2)];
+      return colors[Math.floor(Math.random())];
     }
   },
   created() {

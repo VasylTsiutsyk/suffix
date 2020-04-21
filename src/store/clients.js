@@ -4,20 +4,20 @@ import { mutt } from "./blog";
 export default {
     namespaced: true,
     state: {
-        services: []
+        clients: []
     },
     mutations: {
-        [mutt.SET_SERVICES](state, services) {
-            state.services = services;
+        [mutt.SET_CLIENTS](state, clients) {
+            state.clients = clients;
         }
     },
     actions: {
-        getServices({ state, commit }) {
-            if (state.services.length) return Promise.resolve();
+        getClients({ state, commit }) {
+            if (state.clients.length) return Promise.resolve();
             return new Promise((resolve, reject) => {
-                http.get("/api/content/tsvv-suffix/services").then(
+                http.get("/api/content/tsvv-suffix/clients").then(
                     r => {
-                        commit(mutt.SET_SERVICES, r.data.items);
+                        commit(mutt.SET_CLIENTS, r.data.items);
                         resolve(r.data);
                     },
                     ({ response }) => {
@@ -28,8 +28,8 @@ export default {
         }
     },
     getters: {
-        services(state) {
-            return state.services || [];
+        clients(state) {
+            return state.clients || [];
         }
     }
 };

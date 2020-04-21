@@ -10,6 +10,7 @@ const mutt = {
     SET_FILT_ARTICLES: "SET_FILT_ARTICLES",
     SET_SERVICES: "SET_SERVICES",
     SET_COLLAPSE: "SET_COLLAPSE",
+    SET_CLIENTS: "SET_CLIENTS",
     SET_TAGS: "SET_TAGS",
     SET_LOADED: "SET_LOADED"
 };
@@ -55,8 +56,8 @@ export default {
     },
     actions: {
         getTags({ commit, state }) {
-            if (state.loaded) return;
-            commit(mutt.SET_LOADED);
+            if (state.tags.length) return Promise.resolve();
+
             return new Promise((resolve, reject) => {
                 http.get("/api/content/tsvv-suffix/categories").then(
                     r => {
@@ -70,9 +71,9 @@ export default {
             });
         },
 
-        getArticles({ commit, state, dispatch }) {
-            if (state.loaded) return;
-            commit(mutt.SET_LOADED);
+        getArticles({ commit, state }) {
+            if (state.articles.length) return Promise.resolve();
+
             return Promise.all([
                 new Promise((resolve, reject) => {
                     http.get("/api/content/tsvv-suffix/articles").then(
@@ -84,8 +85,7 @@ export default {
                             reject(response.data);
                         }
                     );
-                }),
-                dispatch("getTags")
+                })
             ]);
         },
         getArticleBySlug({ commit }, slug) {
@@ -112,7 +112,7 @@ export default {
                     );
             });
         },
-        getArticlesByTag({ commit, dispatch }, tagId) {
+        getArticlesByTag({ commit }, tagId) {
             const objectWithSettings = tagId ?
                 {
                     params: {
@@ -133,8 +133,7 @@ export default {
                                 reject(response.data);
                             }
                         );
-                }),
-                dispatch("getTags")
+                })
             ]);
         },
 
@@ -167,9 +166,7 @@ export default {
             return Promise.all(allRequestForTags);
         },
         getArticlesForHome({ dispatch }) {
-            return dispatch("getTags").then(() => {
-                return dispatch("setArticlesWithTag");
-            });
+            return dispatch("setArticlesWithTag");
         }
     },
     getters: {
@@ -185,7 +182,7 @@ export default {
             };
         },
         articles(state) {
-            return state.articles;
+            return state.articles || [];
         },
         articlesCount(state) {
             return state.articles.length;

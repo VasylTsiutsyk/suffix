@@ -4,6 +4,7 @@ import store from "@/store";
 import { preloader } from "@/plugins/preloader";
 
 import Home from "@/views/home.vue";
+import { getGlobalData } from "../plugins/globalData";
 
 Vue.use(VueRouter);
 
@@ -53,6 +54,7 @@ router.beforeEach(async(to, from, next) => {
         preloader.hideWithDelay(400);
         return next();
     }
+    await getGlobalData();
 
     store.dispatch("auth/login").then(
         () => {
@@ -65,4 +67,5 @@ router.beforeEach(async(to, from, next) => {
         }
     );
 });
+
 export default router;

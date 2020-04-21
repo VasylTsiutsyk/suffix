@@ -22,7 +22,7 @@ export default {
         }
     },
     actions: {
-        login({ commit, getters, dispatch }) {
+        login({ commit, getters }) {
             if (getters.isLogin) return Promise.resolve();
 
             return new Promise((resolve, reject) => {
@@ -39,7 +39,7 @@ export default {
                     r => {
                         const token = r.data.access_token;
                         commit(mutt.SET_TOKEN, token);
-                        dispatch("translations/getAll", null, { root: true });
+
                         resolve(r.data);
                     },
                     ({ response }) => {

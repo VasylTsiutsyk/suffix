@@ -1,8 +1,8 @@
 .clients {
     &__wrap {
         position: relative;
-        margin: 120px 0;
         display: flex;
+        margin: 120px 0;
         background-color: var(--color-hover);
     }
     &__img-box {
@@ -24,23 +24,18 @@
         }
     }
     &__content-box {
-        width: 100%;
         z-index: 5;
-        padding: 140px 140px 140px 400px;
+        width: 100%;
+        padding: 140px;
         @include respond-below(md) {
-            padding: 50px;
-            max-height: 450px;
-            overflow: auto;
+            padding: 100px;
         }
         @include respond-below(sm) {
             padding: 40px;
-            max-height: 250px;
-            overflow: auto;
         }
     }
     &__title {
         font-family: var(--font-family-base);
-        font-style: normal;
         font-weight: 800;
         font-size: 24px;
         line-height: 207.9%;
@@ -49,32 +44,19 @@
         color: var(--color-light);
     }
     &__list {
+        margin: 0 -20px;
         display: flex;
         flex-wrap: wrap;
-        margin-left: -60px;
         @include respond-below(md) {
-            margin-left: -60px;
+            max-height: 450px;
+            overflow: auto;
         }
         @include respond-below(sm) {
-            margin-left: -30px;
-        }
-        @include respond-below(xs) {
-            margin-left: 0px;
+            max-height: 250px;
+            overflow: auto;
         }
     }
     &__item {
-        margin: 30px 60px;
-        width: calc(50% - 120px);
-        @include respond-below(md) {
-            margin: 30px;
-        }
-        @include respond-below(sm) {
-            margin: 20px;
-            width: calc(100% - 50px);
-        }
-        @include respond-below(xs) {
-            margin: 10px;
-            width: calc(100%);
-        }
+        margin: 20px;
     }
 }
