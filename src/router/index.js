@@ -3,8 +3,7 @@ import VueRouter from "vue-router";
 import store from "@/store";
 import { preloader } from "@/plugins/preloader";
 import { getGlobalData } from "@/plugins/globalData";
-// import Home from "@/views/home.vue";
-import Home from "../views/home.vue";
+import Home from "@/views/home.vue";
 
 Vue.use(VueRouter);
 
@@ -17,7 +16,7 @@ const routes = [{
         path: "/articles",
         name: "articles",
         component: () =>
-            import ("../views/articles.vue")
+            import ("@/views/articles.vue")
     },
 
     {
