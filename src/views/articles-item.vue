@@ -1,14 +1,19 @@
 <template>
   <main>
     <ArticlesItemBaner />
+
     <section class="blog-article">
       <div class="container">
         <Loader v-if="loading" />
         <div class="blog-article__wrap" v-else>
-          <img
-            :src="singleArticle.image ? singleArticle.image[0] : ''"
-            alt="article-image"
-          />
+          <div class="block__img-wrap">
+            <img
+              :src="singleArticle.image ? singleArticle.image[0] : ''"
+              alt="article-image"
+              class="block__img"
+            />
+            <div class="block__overlay"></div>
+          </div>
           <div class="block__nav">
             <div class="block__date-wrap">
               <time
@@ -40,6 +45,7 @@
 
 <script>
 import ArticlesItemBaner from "@/components/articles-item-baner/articles-item-baner";
+
 import { mutt } from "@/store/blog";
 import { mapState, mapActions } from "vuex";
 
@@ -74,3 +80,20 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.blog-article__wrap {
+  .block__img-wrap {
+    width: 50%;
+    padding-bottom: 33.06%;
+    @include respond-below(sm) {
+      width: 70%;
+      padding-bottom: 46.28%;
+    }
+    @include respond-below(xs) {
+      width: 100%;
+      padding-bottom: 66.12%;
+    }
+  }
+}
+</style>

@@ -11,4 +11,13 @@
             color: var(--color-light);
         }
     }
+    @include respond-below(md) {
+        padding: 80px;
+    }
+    @include respond-below(sm) {
+        padding: 60px;
+        a {
+            display: none;
+        }
+    }
 }

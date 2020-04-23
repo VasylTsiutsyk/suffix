@@ -20,4 +20,11 @@
     &__logo-wrap {
         text-align: center;
     }
+    &.fixed {
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        transition: all 0.5s;
+        background-color: rgba($color-hover, 0.7);
+    }
 }

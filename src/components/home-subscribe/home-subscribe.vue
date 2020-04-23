@@ -3,7 +3,7 @@
     <div class="container">
       <div class="subscribe__wrap">
         <div class="subscribe__img-box">
-          <img src="img/subscribe.jpg" alt="" class="subscribe__img" />
+          <img src="/svg/Photo.jpg" alt="some photo" class="subscribe__img" />
           <div class="block__overlay"></div>
         </div>
         <div class="subscribe__content-box">

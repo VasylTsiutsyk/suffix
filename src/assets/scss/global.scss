@@ -154,7 +154,9 @@ body {
             background-color: var(--color-hover);
             border-color: var(--color-hover);
         }
-        &:focus {
+        &:focus,
+        &:active,
+        &.router-link-exact-active {
             background-color: var(--color-light);
             color: var(--color-base);
             outline: none;

@@ -33,6 +33,12 @@
       {{ article.data.title }}
     </h3>
     <p class="featured__intro" v-html="article.data.intro"></p>
+    <router-link
+      :to="'/articles/' + article.data.slug"
+      class="block__link link--black"
+    >
+      {{ $t("global.read-more") }}
+    </router-link>
   </li>
 </template>
 

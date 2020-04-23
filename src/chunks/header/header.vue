@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" ref="header">
     <div class="container-header">
       <div class="header__wrap">
         <Burger />
@@ -18,6 +18,18 @@
 import Burger from "@/chunks/app/burger/burger";
 export default {
   name: "suffix-header",
+  mounted() {
+    let header = this.$refs.header;
+    window.onscroll = scrollHandler;
+    function scrollHandler() {
+      var h = document.documentElement.clientHeight;
+      if (window.pageYOffset > h) {
+        header.classList.add("fixed");
+      } else {
+        header.classList.remove("fixed");
+      }
+    }
+  },
   components: {
     Burger
   }
