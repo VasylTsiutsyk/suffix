@@ -53,32 +53,28 @@ export default {
     ...mapState("blog", ["tags", "filteredArticles"])
   },
   methods: {
-    ...mapActions("blog", ["getArticlesByTag"])
+    ...mapActions("blog", ["getArticlesByTag"]),
+    requestArticles(route, callback = () => {}) {
+      this.loading = true;
+      this.getArticlesByTag()
+        .then(() => {
+          const el = this.tags.find(tag => {
+            return tag.data.title === route.query.tag;
+          });
+          const tagId = el && el.id ? el.id : null;
+          if (tagId) {
+            this.getArticlesByTag(tagId);
+          }
+        })
+        .then(callback);
+      this.loading = false;
+    }
   },
   beforeRouteUpdate(to, from, next) {
-    this.loading = true;
-    this.getArticlesByTag().then(() => {
-      const el = this.tags.find(i => {
-        return i.data.title === to.query.tag;
-      });
-      const tagId = el && el.id ? el.id : null;
-      this.getArticlesByTag(tagId);
-      this.loading = false;
-      next();
-    });
+    this.requestArticles(to, next);
   },
   created() {
-    this.loading = true;
-    this.getArticlesByTag().then(() => {
-      const el = this.tags.find(i => {
-        return i.data.title === this.$route.query.tag;
-      });
-      const tagId = el && el.id ? el.id : null;
-      if (tagId) {
-        this.getArticlesByTag(tagId);
-      }
-      this.loading = false;
-    });
+    this.requestArticles(this.$route);
   },
   components: {
     ArticlesBaner,

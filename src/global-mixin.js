@@ -1,4 +1,4 @@
-import { /*mapState,*/ mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export const mixin = {
     methods: {

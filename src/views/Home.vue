@@ -37,6 +37,7 @@ export default {
   },
   computed: mapGetters("blog", ["tagFirst", "tagExceptFirst"]),
   created() {
+    this.loading = true;
     this.$store.dispatch("blog/getArticlesForHome").then(() => {
       this.loading = false;
     });

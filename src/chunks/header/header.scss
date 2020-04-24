@@ -24,7 +24,7 @@
         position: fixed;
         width: 100%;
         z-index: 1000;
-        transition: all 0.5s;
+        transition: var(--transition-base);
         background-color: rgba($color-hover, 0.7);
     }
 }

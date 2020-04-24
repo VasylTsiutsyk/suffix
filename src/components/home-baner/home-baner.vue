@@ -4,7 +4,7 @@
       <div class="baner__img-box">
         <img
           class="baner__img"
-          alt=""
+          alt="image of baner"
           :src="articlesByTag.data.image ? articlesByTag.data.image[0] : ''"
         />
       </div>
