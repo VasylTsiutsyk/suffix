@@ -1,8 +1,11 @@
+/* eslint-disable */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
+
 import { preloader } from "@/plugins/preloader";
 import { getGlobalData } from "@/plugins/globalData";
+
 import Home from "@/views/home.vue";
 
 Vue.use(VueRouter);
