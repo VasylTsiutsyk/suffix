@@ -15,6 +15,7 @@
         "caniuse-lite": "^1.0.30001046",
         "core-js": "^3.4.3",
         "express": "^4.17.1",
+        "minimist": "^1.2.5",
         "moment": "^2.24.0",
         "normalize.css": "^8.0.1",
         "serve-static": "^1.14.1",
@@ -38,8 +39,6 @@
         "node-sass": "^4.14.0",
         "prettier": "^1.19.1",
         "sass-loader": "^8.0.0",
-        "vue-collapse": "^1.0.31",
-        "vue-template-compiler": "^2.6.10",
-        "vue2-collapse": "^1.0.15"
+        "vue-template-compiler": "^2.6.10"
     }
 }
