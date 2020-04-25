@@ -1,4 +1,4 @@
-# logos
+# suffix
 
 ## Project setup
 ```
