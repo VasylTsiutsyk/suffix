@@ -229,8 +229,7 @@
         Modernizr = function() {};
     (Modernizr.prototype = S), (Modernizr = new Modernizr());
     var _ = S._config.usePrefixes ?
-        " -webkit- -moz- -o- -ms- ".split(" ") :
-        ["", ""];
+        " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];
     S._prefixes = _;
     var w = n.documentElement,
         x = "svg" === w.nodeName.toLowerCase(),

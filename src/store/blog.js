@@ -1,6 +1,6 @@
 import { http } from "@/plugins/http";
-import Vue from "vue";
 import router from "@/router";
+import Vue from "vue";
 
 const mutt = {
     SET_HOME_ARTICLES: "SET_HOME_ARTICLES",
