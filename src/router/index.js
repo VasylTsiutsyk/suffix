@@ -44,7 +44,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async(to, from, next) => {
-    await preloader.showWithDelay(500);
+    await preloader.showWithDelay(300);
 
     if (
         to.matched.some(record => record.meta.notProtected) ||

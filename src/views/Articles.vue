@@ -35,6 +35,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { mutt } from "@/store/blog";
 import ArticlesBaner from "@/components/articles-baner/articles-baner";
 import ArticleItem from "@/components/article-item/article-item";
 export default {
@@ -51,6 +52,10 @@ export default {
   },
   computed: {
     ...mapState("blog", ["tags", "filteredArticles"])
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$store.commit(`blog/${mutt.DEL_FILT_ARCTICLES}`);
+    next();
   },
   methods: {
     ...mapActions("blog", ["getArticlesByTag"]),

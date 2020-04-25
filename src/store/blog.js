@@ -8,6 +8,7 @@ const mutt = {
     DEL_SINGLE_ARCTICLE: "DEL_SINGLE_ARCTICLE",
     SET_ARTICLES: "SET_ARTICLES",
     SET_FILT_ARTICLES: "SET_FILT_ARTICLES",
+    DEL_FILT_ARTICLES: "DEL_FILT_ARTICLES",
     SET_SERVICES: "SET_SERVICES",
     SET_COLLAPSE: "SET_COLLAPSE",
     SET_CLIENTS: "SET_CLIENTS",
@@ -34,6 +35,9 @@ export default {
 
         [mutt.SET_FILT_ARTICLES](state, articles) {
             state.filteredArticles = articles;
+        },
+        [mutt.DEL_FILT_ARTICLES](state) {
+            state.filteredArticles = [];
         },
 
         [mutt.SET_HOME_ARTICLES](state, { tag, data }) {
