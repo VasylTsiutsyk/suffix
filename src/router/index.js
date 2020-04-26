@@ -4,7 +4,7 @@ import store from "@/store";
 import { getGlobalData } from "@/plugins/globalData";
 import { preloader } from "@/plugins/preloader";
 
-import Home from "../views/home.vue";
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
@@ -17,20 +17,20 @@ const routes = [{
         path: "/articles",
         name: "articles",
         component: () =>
-            import ("../views/articles.vue")
+            import ("@/views/Articles.vue")
     },
 
     {
         path: "/articles/:slug",
         name: "articles-item",
         component: () =>
-            import ("@/views/articles-item.vue")
+            import ("@/views/Articles-item.vue")
     },
     {
         path: "/404",
         name: "404",
         component: () =>
-            import ("@/views/error-404.vue")
+            import ("@/views/Error-404.vue")
     },
     {
         path: "*",
