@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from "axios";
 import store from "@/store";
 
@@ -15,7 +16,6 @@ axiosInstance.interceptors.response.use(
     },
     function(data) {
         if (data.response.status === 401) {
-            console.log("Token is not valid or token is not exist");
             store.dispatch("auth/login");
             document.location.reload();
         }
