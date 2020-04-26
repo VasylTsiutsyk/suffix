@@ -24,13 +24,13 @@ const routes = [{
         path: "/articles/:slug",
         name: "articles-item",
         component: () =>
-            import ("@/views/Articles-item.vue")
+            import ("@/views/articles-item.vue")
     },
     {
         path: "/404",
         name: "404",
         component: () =>
-            import ("@/views/Error-404.vue")
+            import ("@/views/error-404.vue")
     },
     {
         path: "*",
