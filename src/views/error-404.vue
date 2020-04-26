@@ -53,7 +53,7 @@ figure {
     font-size: 6px;
   }
   @include respond-below(sm) {
-    font-size: 4px;
+    font-size: 5px;
   }
   @include respond-below(xs) {
     font-size: 3px;

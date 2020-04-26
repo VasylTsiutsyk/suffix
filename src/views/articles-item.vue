@@ -37,6 +37,7 @@ export default {
     ...mapActions("blog", ["getArticleBySlug"])
   },
   created() {
+    this.loading = true;
     this.getArticleBySlug(this.$route.params.slug).then(() => {
       this.loading = false;
     });
