@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@fortawesome/vue-fontawesome": "^0.1.9",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "browserslist": "^4.12.0",
         "caniuse-lite": "^1.0.30001046",
         "core-js": "^3.4.3",
